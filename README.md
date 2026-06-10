@@ -1,2 +1,0 @@
-# estetica
-trabajo escolar

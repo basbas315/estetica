@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estética Perris - Catálogo Digital</title>
+    <style>
+        /* --- ESTILOS GLOBALES Y PALETA DE COLORES --- */
+        :root {
+            --color-primario: #111111;   /* Negro elegante para formalidad */
+            --color-secundario: #D4AF37; /* Dorado sutil para detalles y precios */
+            --color-fondo: #FAFAFA;      /* Fondo limpio */
+            --color-tarjeta: #FFFFFF;    /* Bloques de contenido */
+            --color-texto: #333333;      /* Texto de lectura cómoda */
+            --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente-principal);
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+
+        /* --- ENCABEZADO --- */
+        header {
+            background-color: var(--color-primario);
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-bottom: 4px solid var(--color-secundario);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #cccccc;
+            letter-spacing: 1px;
+        }
+
+        /* --- ENLACE A INSTAGRAM DESTACADO --- */
+        .btn-instagram {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background-color: transparent;
+            color: var(--color-secundario);
+            border: 1px solid var(--color-secundario);
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-instagram:hover {
+            background-color: var(--color-secundario);
+            color: var(--color-primario);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: #1a1a1a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-secundario);
+        }
+
+        /* --- CONTENEDOR --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            background-color: var(--color-tarjeta);
+            padding: 3rem 2rem;
+            margin-bottom: 2.5rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            color: var(--color-primario);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- LISTADO DE PRECIOS EXACTOS --- */
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .categoria-servicio {
+            border: 1px solid #eeeeee;
+            padding: 1.5rem;
+            border-radius: 4px;
+            background-color: #ffffff;
+        }
+
+        .categoria-servicio h3 {
+            font-size: 1.3rem;
+            color: var(--color-primario);
+            text-transform: uppercase;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .fila-precio {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.8rem;
+        }
+
+        .fila-precio:last-child {
+            margin-bottom: 0;
+        }
+
+        .servicio-nombre {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-texto);
+            padding-right: 10px;
+        }
+
+        .servicio-detalle {
+            font-size: 0.85rem;
+            color: #777777;
+            display: block;
+            margin-top: 0.1rem;
+        }
+
+        .servicio-costo {
+            font-weight: bold;
+            color: var(--color-primario);
+            white-space: nowrap;
+        }
+
+        /* --- PORTAFOLIO / GALERÍA --- */
+        .grid-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .foto-galeria {
+            background-color: #eaeaea;
+            height: 250px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        .foto-galeria span {
+            font-size: 0.85rem;
+            color: #888888;
+            text-transform: uppercase;
+        }
+
+        /* --- CONTACTO Y FORMULARIO --- */
+        .contacto-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-contacto div {
+            margin-bottom: 1.2rem;
+        }
+
+        .info-contacto strong {
+            display: block;
+            color: var(--color-primario);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        input, textarea {
+            padding: 0.75rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-secundario);
+        }
+
+        button {
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #333333;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            background-color: var(--color-primario);
+            color: #888888;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #222222;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            nav a { padding: 0.8rem 1rem; font-size: 0.8rem; }
+            section { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="inicio">
+        <h1>Estética Perris</h1>
+        <p>Catálogo Digital Oficial de Servicios y Precios</p>
+        <a href="https://www.instagram.com/estetica._.perris/" target="_blank" class="btn-instagram">Ver Instagram Oficial</a>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#precios">Precios</a>
+        <a href="#galeria">Portafolio</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="container">
+
+        <section>
+            <h2>Transparencia y Profesionalismo</h2>
+            <p>Bienvenido a nuestro catálogo digital estructurado. Diseñado para ofrecer una consulta rápida, clara y transparente de nuestros servicios de estilismo y cuidado personal. Garantizamos una ventaja informativa inmediata con costos totalmente visibles al público.</p>
+        </section>
+
+        <section id="precios">
+            <h2>Lista Abierta de Precios</h2>
+            <p style="margin-bottom: 2rem;">Consulte tarifas oficiales organizadas por especialidad para planificar su cita de manera eficiente.</p>
+            
+            <div class="grid-servicios">
+                
+                <div class="categoria-servicio">
+                    <h3>Cortes de Cabello</h3>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Corte General / Chicos</span>
+                        </div>
+                        <span class="servicio-costo">$90</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Corte para Chicas</span>
+                            <span class="servicio-detalle">Estilo estándar</span>
+                        </div>
+                        <span class="servicio-costo">$120</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Corte Laborioso (Chicas)</span>
+                            <span class="servicio-detalle">Diseños complejos o cambios drásticos</span>
+                        </div>
+                        <span class="servicio-costo">$160</span>
+                    </div>
+                </div>
+
+                <div class="categoria-servicio">
+                    <h3>Tinte y Colorimetría</h3>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Tinte sin Decoloración</span>
+                        </div>
+                        <span class="servicio-costo">$600</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Con Decoloración (Corto)</span>
+                            <span class="servicio-detalle">Estilo tipo pelona</span>
+                        </div>
+                        <span class="servicio-costo">$400</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Con Decoloración (Medio)</span>
+                            <span class="servicio-detalle">Cabello a los hombros</span>
+                        </div>
+                        <span class="servicio-costo">$600</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Con Decoloración (Largo)</span>
+                            <span class="servicio-detalle">Cabello hasta las caderas</span>
+                        </div>
+                        <span class="servicio-costo">$1,200</span>
+                    </div>
+                </div>
+
+                <div class="categoria-servicio">
+                    <h3>Cuidado de Uñas</h3>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Uñas con Gel</span>
+                        </div>
+                        <span class="servicio-costo">$250</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Uñas Acrílicas</span>
+                            <span class="servicio-detalle">*Todo el material de decoración viene aparte</span>
+                        </div>
+                        <span class="servicio-costo">$300</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Paquete de Uñas</span>
+                            <span class="servicio-detalle">Sin gel y percuda</span>
+                        </div>
+                        <span class="servicio-costo">$600</span>
+                    </div>
+                </div>
+
+                <div class="categoria-servicio">
+                    <h3>Servicios de Pedicura</h3>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Pedicura en Seco</span>
+                        </div>
+                        <span class="servicio-costo">$250</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Pedicura Tipo Spa</span>
+                        </div>
+                        <span class="servicio-costo">$300</span>
+                    </div>
+                    <div class="fila-precio">
+                        <div>
+                            <span class="servicio-nombre">Pedicura con Bomba</span>
+                        </div>
+                        <span class="servicio-costo">$350</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2>Portafolio Visual</h2>
+            <p>Muestra permanente de los trabajos técnicos realizados en el establecimiento.</p>
+            <div class="grid-galeria">
+                <div class="foto-galeria"><span>[ Trabajo de Corte ]</span></div>
+                <div class="foto-galeria"><span>[ Trabajo de Color ]</span></div>
+                <div class="foto-galeria"><span>[ Aplicación de Uñas ]</span></div>
+                <div class="foto-galeria"><span>[ Servicio Pedicura ]</span></div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto e Información</h2>
+            <div class="contacto-layout">
+                <div class="info-contacto">
+                    <div>
+                        <strong>Ubicación Comunitaria</strong>
+                        <p>Santa María Huatulco, Oaxaca.</p>
+                    </div>
+                    <div>
+                        <strong>Redes Oficiales</strong>
+                        <p>Instagram: @estetica._.perris</p>
+                    </div>
+                    <div>
+                        <strong>Disponibilidad</strong>
+                        <p>Información de precios abierta de manera permanente las 24 horas.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <form onsubmit="event.preventDefault(); alert('Solicitud registrada correctamente.');">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del Cliente</label>
+                            <input type="text" id="nombre" required placeholder="Ej. María Sánchez">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio-interes">Servicio Solicitado</label>
+                            <input type="text" id="servicio-interes" placeholder="Ej. Pedicura tipo Spa o Uñas Acrílicas">
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Notas o Detalles de la Consulta</label>
+                            <textarea id="mensaje" rows="4" placeholder="Escriba aquí si desea agregar decoraciones especiales u otras dudas..."></textarea>
+                        </div>
+                        <button type="submit">Consultar Disponibilidad</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; Estética Perris. Todos los derechos reservados.</p>
+        <p>Documentación técnica desarrollada con fines estrictamente académicos.</p>
+    </footer>
+
+</body>
+</html>
